@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import AsyncSelect from 'react-select/async';
+import AsyncCreatable from "react-select/async-creatable";
 import { OptionsType, OptionTypeBase } from 'react-select';
 import { useDebouncedCallback } from 'use-debounce';
 import GooglePlacesAutocompleteProps, { AutocompletionRequest }from './GooglePlacesAutocomplete.types';
@@ -58,7 +58,8 @@ const GooglePlacesAutocomplete: React.FC<GooglePlacesAutocompleteProps> = ({
   }, []);
 
   return (
-    <AsyncSelect
+    <AsyncCreatable
+      formatCreateLabel={(value) => value}
       {...selectProps}
       loadOptions={fetchSuggestions}
       getOptionValue={({ value }) => value.place_id}
